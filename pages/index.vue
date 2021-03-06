@@ -1,28 +1,110 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        portfolio-blog
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="highlights-container">
+    <div class="inner">
+      <div class="left-side">
+        <div class="card">
+          <div class="card-img" />
+          <div class="card-img-overlay" />
+          <div class="card-info">
+            <div class="card-text">
+              <div class="card-title">
+                This is my card title
+              </div>
+              <div class="card-briefs">
+                <div class="card-date">
+                  the card date
+                </div>
+                <div class="bar" />
+                <div class="article-time">
+                  20 mins read
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <button>
+                <div class="text">
+                  Read Story
+                </div>
+                <div class="material-icons">
+                  arrow_forward
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="right-side">
+        <div class="card">
+          <div class="card-img" />
+          <div class="card-img-overlay" />
+          <div class="card-info">
+            <div class="card-text">
+              <div class="card-title">
+                This is my card title
+              </div>
+              <div class="card-briefs">
+                <div class="card-date">
+                  the card date
+                </div>
+                <div class="bar" />
+                <div class="article-time">
+                  20 mins read
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <button>
+                <div class="text">
+                  Read Story
+                </div>
+                <div class="material-icons">
+                  arrow_forward
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img" />
+          <div class="card-img-overlay" />
+          <div class="card-info">
+            <div class="card-text">
+              <div class="card-title">
+                This is my card title
+              </div>
+              <div class="card-briefs">
+                <div class="card-date">
+                  the card date
+                </div>
+                <div class="bar" />
+                <div class="article-time">
+                  20 mins read
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <button>
+                <div class="text">
+                  Read Story
+                </div>
+                <div class="material-icons">
+                  arrow_forward
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-action">
+      <button>
+        <div class="text">
+          See all stories
+        </div>
+        <div class="material-icons">
+          arrow_forward
+        </div>
+      </button>
     </div>
   </div>
 </template>
@@ -31,43 +113,123 @@
 export default {}
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+<style scoped>
+.highlights-container > .card-action > button {
+  margin-top: 64px;
   display: flex;
-  justify-content: center;
+  width: 300px;
+  height: 45px;
+  padding: 0 24px;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
+  outline: none;
+  border: 2px solid;
+  font-size: 18px;
+  background: #DE8500;
+  color: #000000;
+}
+.highlights-container .inner {
+  display: flex;
+  justify-content: space-between;
+  height: 600px;
+}
+.card {
+  border: 6px solid;
+  position: relative;
+}
+.card-info {
+  padding: 16px;
+}
+.left-side .card-info {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.left-side button {
+  display: flex;
+  width: 200px;
+  height: 45px;
+  justify-content: space-around;
+  align-items: center;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: #000;
+  color: #DE8500;
+}
+.right-side button {
+  display: flex;
+  width: 100%;
+  margin-top: 32px;
+  height: 45px;
+  padding: 0 24px;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: #000;
+  color: #DE8500;
+}
+.card-briefs {
+  margin: 8px 0;
+  display: flex;
+  color: #0000007a;
+}
+.bar {
+  margin: auto 24px;
+  width: 3px;
+  height: 20px;
+  background: #DE8500;
+  border-radius: 16px;
 }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.left-side {
+  flex-basis: 63%;
+  margin-top: 28px;
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.left-side .card {
+  height: 100%;
 }
-
-.links {
-  padding-top: 15px;
+.right-side .card {
+  height: 46%;
+}
+.right-side {
+  flex-basis: 33%;
+}
+.left-side .card-img {
+  background: url('~assets/bitmaps/spotify.png') no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 440px;
+}
+.left-side .card-img-overlay {
+  position: absolute;
+  background: #de850021;
+  background-size: cover;
+  width: 100%;
+  top: 0;
+  height: 440px;
+}
+.right-side .card:nth-child(1) {
+  margin-bottom: 60px;
+}
+.right-side .card-img {
+  background: url('~assets/bitmaps/spotify.png') no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 160px;
+}
+.right-side .card-img-overlay {
+  position: absolute;
+  background: #de850021;
+  background-size: cover;
+  width: 100%;
+  top: 0;
+  height: 160px;
 }
 </style>
