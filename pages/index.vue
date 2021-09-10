@@ -21,14 +21,14 @@
               </div>
             </div>
             <div class="card-action">
-              <button>
+              <nuxt-link to="/stories/hdhjdh">
                 <div class="text">
                   Read Story
                 </div>
                 <div class="material-icons">
                   arrow_forward
                 </div>
-              </button>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -53,14 +53,14 @@
               </div>
             </div>
             <div class="card-action">
-              <button>
+              <nuxt-link to="/stories/hdhjdh">
                 <div class="text">
                   Read Story
                 </div>
                 <div class="material-icons">
                   arrow_forward
                 </div>
-              </button>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -83,38 +83,46 @@
               </div>
             </div>
             <div class="card-action">
-              <button>
+              <nuxt-link to="/stories/hdhjdh">
                 <div class="text">
                   Read Story
                 </div>
                 <div class="material-icons">
                   arrow_forward
                 </div>
-              </button>
+              </nuxt-link>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-action">
-      <button>
+      <nuxt-link to="/stories">
         <div class="text">
           See all stories
         </div>
         <div class="material-icons">
           arrow_forward
         </div>
-      </button>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Highlights'
+}
 </script>
 
 <style scoped>
-.highlights-container > .card-action > button {
+a {
+  text-decoration: none;
+}
+.highlights-container {
+  min-height: 76vh;
+}
+.highlights-container > .card-action > a {
   margin-top: 64px;
   display: flex;
   width: 300px;
@@ -149,7 +157,7 @@ export default {}
   font-size: 18px;
   font-weight: 500;
 }
-.left-side button {
+.left-side a {
   display: flex;
   width: 200px;
   height: 45px;
@@ -161,9 +169,9 @@ export default {}
   background: #000;
   color: #DE8500;
 }
-.right-side button {
+.right-side a {
   display: flex;
-  width: 100%;
+  width: auto;
   margin-top: 32px;
   height: 45px;
   padding: 0 24px;

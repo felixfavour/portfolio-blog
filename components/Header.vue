@@ -1,5 +1,5 @@
 <template>
-  <div class="header-container">
+  <div :class="['header-container', ($route.name.includes('-') ? 'elevated' : '')]">
     <a class="logo" href="/" />
     <div class="nav-actions">
       <div class="action">
@@ -10,7 +10,7 @@
       <div class="bar" />
       <div class="action">
         <span>
-          {{ ($route.name === 'index' ? 'Highlights' : $route.name.toUppercase() )}}
+          {{ ($route.name === 'index' ? 'Highlights' : ($route.name.includes('-') ? 'MY STORY' : $route.name.toUpperCase())) }}
         </span>
       </div>
     </div>
@@ -40,11 +40,14 @@ export default {
 <style scoped>
   .header-container {
     background-color: #FFDEAC;
-    height: 12vh;
+    height: 95px;
     justify-content: space-between;
     align-items: center;
     display: flex;
     padding: 0 10vw;
+  }
+  .header-container.elevated {
+    box-shadow: 40px 5px 45px 4px #de850049;
   }
   .material-icons {
     margin-left: 4px;

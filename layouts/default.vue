@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <div v-if="!isLoading" class="main">
-      <QuotePurger v-if="false" />
+      <QuotePurger v-if="true" />
       <Header v-if="screenWidth > 1024" class="fadedown" />
       <MobileHeader v-if="screenWidth <= 1024" class="fadedown" />
       <div class="ellipse one">
@@ -66,12 +66,12 @@ export default {
 <style scoped>
   .body {
     /* height: 100vh; */
-    max-height: 100vh;
+    /* max-height: 100vh; */
     max-width: 100vw;
   }
   .container {
     padding: 0 10vw;
-    height: 76vh;
+    min-height: 76vh;
   }
   .ellipse {
     display: none;
