@@ -120,7 +120,7 @@ a {
   text-decoration: none;
 }
 .highlights-container {
-  min-height: 76vh;
+  height: 100%;
 }
 .highlights-container > .card-action > a {
   margin-top: 64px;
