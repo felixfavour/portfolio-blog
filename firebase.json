@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "favour-blog",
     "public": "dist",
     "ignore": [
       "firebase.json",
