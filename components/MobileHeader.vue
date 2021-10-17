@@ -86,7 +86,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5vw;
+    padding: 0 5%;
   }
   .logo {
     width: 100%;
@@ -97,7 +97,7 @@ export default {
     position: fixed;
     right: 0;
     left: 0;
-    padding: 0 5vw;
+    padding: 0 5%;
     top: 10vh;
     bottom: 0;
   }

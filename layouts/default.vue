@@ -10,6 +10,9 @@
       <div class="ellipse two">
         <img src="~assets/bitmaps/ellipse2.png">
       </div>
+      <div class="stories-bg">
+        <img src="~assets/icons/stories-bg.svg">
+      </div>
       <div v-show="false" class="image">
         <div class="personal-image-sill" />
         <div class="personal-image" />
@@ -64,6 +67,13 @@ export default {
 </script>
 
 <style scoped>
+  .stories-bg {
+    position: absolute;
+    height: 80vh;
+  }
+  .stories-bg > img {
+    height: 100%;
+  }
   .body {
     /* height: 100vh; */
     /* max-height: 100vh; */
@@ -141,7 +151,20 @@ export default {
 
   @media screen and (max-width: 1024px) {
     .container {
-      padding: 0 5vw;
+      padding: 0 5%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .stories-bg {
+      width: 100%;
+      position: absolute;
+    }
+    .stories-bg > img {
+      width: 100%;
+      position: absolute;
+      object-fit: contain;
+      height: 80vh;
     }
   }
 

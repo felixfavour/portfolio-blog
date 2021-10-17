@@ -10,8 +10,11 @@
       <div class="bar" />
       <div class="action">
         <span>
-          {{ ($route.name === 'index' ? 'Highlights' : ($route.name.includes('-') ? 'MY STORY' : $route.name.toUpperCase())) }}
+          Early Access
         </span>
+        <!-- <span>
+          {{ ($route.name === 'index' ? 'Highlights' : ($route.name.includes('-') ? 'MY STORY' : $route.name.toUpperCase())) }}
+        </span> -->
       </div>
     </div>
   </div>
@@ -69,7 +72,7 @@ export default {
     align-items: center;
     transition: .4s;
     justify-content: center;
-    font-weight: 500;
+    font-weight: normal;
     font-size: 24px;
     color: #000;
   }
@@ -81,7 +84,7 @@ export default {
   .action span {
     cursor: default;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: normal;
   }
   .action span::after {
     content: '.';

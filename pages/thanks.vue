@@ -2,30 +2,20 @@
   <div class="highlights-container">
     <div class="inner">
       <div class="header-text">
-        <span class="comeup-one">you</span>
-        <span class="comeup-two">don't</span>
-        <span class="comeup-three">rush</span>
-        <div class="comeup-four">
-          genius.
+        <span>thank</span><span>you!</span><span>see</span> <br>
+        <div>you<span>soon.</span></div>
+      </div>
+      <div class="sub-text">
+        You just signed up for early access to exciting stories about everything and anything I venture or have ever ventured into.
+      </div>
+      <nuxt-link to="/" class="primary-btn come-up">
+        <div class="text">
+          Go Home
         </div>
-      </div>
-      <div class="sub-text comeup-five">
-        “Good things take time. Great things take a long time. And the best things take the longest time.”
-      </div>
-      <div class="form comeup-six">
-        <label for="input">
-          Your Email Address
-          <input type="text">
-        </label>
-        <button class="primary-btn">
-          <div class="text">
-            Get Early Access
-          </div>
-          <div class="material-icons">
-            arrow_forward
-          </div>
-        </button>
-      </div>
+        <div class="material-icons">
+          arrow_forward
+        </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -35,12 +25,12 @@ export default {
   name: 'Highlights',
   head () {
     return {
-      title: 'Favour Felix, Stories',
+      title: 'Thank You!',
       meta: [
         {
           name: 'description',
           content:
-            'Dig into the life of a Software Engineer, talking about everything you want to hear.'
+            'This is the official portfolio of Favour Felix. I enjoy building software, helping people with efficient and intuitive computer software has always been the dream. These days I live the dream at Acumen Digital'
         }
       ]
     }
@@ -57,7 +47,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 6%;
+  padding-top: 10%;
   transition: 0.2s;
 }
 .highlights-container > .inner {
@@ -72,11 +62,11 @@ export default {
   transition: 0.2s;
 }
 .header-text > span {
-  margin-right: calc(1ch / 5);
-  display: inline-block;
+  margin-right: calc(1ch / 2);
 }
-.header-text > div {
+.header-text > div > span {
   color: #DE8500;
+  margin-left: calc(1ch / 2);
 }
 .sub-text {
   font-family: 'Crimson Text', serif;
@@ -87,7 +77,7 @@ export default {
 .primary-btn {
   text-decoration: none;
   display: flex;
-  width: auto;
+  width: 150px;
   margin-top: 32px;
   height: 45px;
   padding: 0 24px;
@@ -260,7 +250,7 @@ label > input:focus {
     width: 100%;
   }
   .header-text {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .sub-text {
     width: 95%;

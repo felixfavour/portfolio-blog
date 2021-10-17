@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'portfolio-blog',
+    title: 'Favour Felix, Stories',
     htmlAttrs: {
       lang: 'en'
     },
