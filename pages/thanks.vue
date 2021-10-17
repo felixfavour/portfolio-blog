@@ -21,6 +21,9 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+// initialize firebase analytics
+import 'firebase/analytics'
 export default {
   name: 'Highlights',
   head () {
@@ -34,6 +37,10 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    const analytics = firebase.analytics()
+    analytics.logEvent('registered', { name: 'TEST_VISIT' })
   }
 }
 </script>

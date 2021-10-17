@@ -2,6 +2,7 @@
   <div class="body">
     <div v-if="!isLoading" class="main">
       <QuotePurger v-if="false" />
+      <!-- <Header class="fadedown" /> -->
       <Header v-if="screenWidth > 1024" class="fadedown" />
       <MobileHeader v-if="screenWidth <= 1024" class="fadedown" />
       <div class="ellipse one">
@@ -81,7 +82,7 @@ export default {
   }
   .container {
     padding: 0 10vw;
-    min-height: 82vh;
+    min-height: 77vh;
   }
   .ellipse {
     display: none;

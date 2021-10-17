@@ -13,17 +13,18 @@
         “Good things take time. Great things take a long time. And the best things take the longest time.”
       </div>
       <div class="form comeup-six">
-        <label for="input">
+        <label :class="isEmailValid ? '' : 'error-input'" for="input">
           Your Email Address
-          <input type="text">
+          <input v-model="email" type="text">
         </label>
-        <button class="primary-btn">
+        <button :disabled="!isEmailValid" class="primary-btn" @click="addEmailToMailingList">
           <div class="text">
             Get Early Access
           </div>
-          <div class="material-icons">
+          <div v-show="!isUploading" class="material-icons">
             arrow_forward
           </div>
+          <Loader v-show="isUploading" />
         </button>
       </div>
     </div>
@@ -31,8 +32,18 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+// initialize firebase analytics
+import 'firebase/analytics'
 export default {
   name: 'Highlights',
+  data () {
+    return {
+      isUploading: false,
+      email: ''
+    }
+  },
   head () {
     return {
       title: 'Favour Felix, Stories',
@@ -43,6 +54,28 @@ export default {
             'Dig into the life of a Software Engineer, talking about everything you want to hear.'
         }
       ]
+    }
+  },
+  computed: {
+    isEmailValid () {
+      const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return regex.test(String(this.email).toLowerCase())
+    }
+  },
+  mounted () {
+    const analytics = firebase.analytics()
+    analytics.logEvent('page_visited', { name: 'TEST_VISIT' })
+  },
+  methods: {
+    addEmailToMailingList () {
+      const firestore = firebase.firestore()
+      this.isUploading = true
+      firestore.collection('visitors').doc().set({
+        email: this.email
+      }).then((onfulfilled) => {
+        this.isUploading = false
+        this.$router.push('/thanks')
+      })
     }
   }
 }
@@ -97,7 +130,13 @@ export default {
   background: #9E5F00;
   border: 2px solid #000000;
   color: #FFFFFF;
+  transition: 0.2s;
   cursor: pointer;
+}
+.primary-btn:disabled {
+  cursor: not-allowed;
+  background: #cecece;
+  border-color: #cecece;
 }
 .primary-btn .text {
   margin-right: 28px;
@@ -121,6 +160,22 @@ label:focus-within {
 }
 label > input:focus {
   background: #DE8500;
+}
+.error-input > input {
+  border: 2px solid #DE8500;
+  background: #FFFFFF;
+}
+label::after {
+  content: ' ';
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  color: #DE8500;
+  animation: 2s comeup-one forwards;
+  height: 30px;
+}
+.error-input::after {
+  content: 'Email address is not valid';
 }
 
 /* Animations */
