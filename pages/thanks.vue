@@ -40,7 +40,7 @@ export default {
   },
   mounted () {
     const analytics = firebase.analytics()
-    analytics.logEvent('registered', { name: 'TEST_VISIT' })
+    analytics.logEvent('registered', { name: 'VISIT' })
   }
 }
 </script>
