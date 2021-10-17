@@ -71,7 +71,7 @@ export default {
       const firestore = firebase.firestore()
       this.isUploading = true
       firestore.collection('emails').doc().set({
-        to: this.emaiil,
+        to: this.email,
         message: {
           subject: 'Hi, Its Favour.',
           text: 'Thanks for showing interest in my online journal, trust me! you made a very good decision. I\'d be reaching out to you soon.'

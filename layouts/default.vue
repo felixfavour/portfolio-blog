@@ -82,7 +82,7 @@ export default {
   }
   .container {
     padding: 0 10vw;
-    min-height: 77vh;
+    min-height: 83vh;
   }
   .ellipse {
     display: none;
@@ -186,5 +186,11 @@ export default {
     filter: drop-shadow(0px 38px 56px rgba(0, 0, 0, 0.25));
     transform: translate(-35px, 10px);
     animation: reveal 1s forwards;
+  }
+
+  @media screen and (max-height: 900px) {
+    .container {
+      min-height: 77vh;
+    }
   }
 </style>
