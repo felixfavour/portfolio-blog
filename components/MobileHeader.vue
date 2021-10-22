@@ -13,26 +13,22 @@
     </div>
     <div :class="'nav-actions ' + (hamOpen ? 'sidebarEnter' : 'sidebarExit')">
       <div class="action">
-        <nuxt-link :class="($route.name === 'index' ? 'active' : '')" to="/">
+        <a :class="($route.name === 'index' ? 'active' : '')" href="https://favourfelix.com">
           Home
-        </nuxt-link>
+          <span class="material-icons">call_made</span>
+        </a>
         <div class="bar home" />
       </div>
       <div class="action">
-        <nuxt-link :class="($route.name === 'about' ? 'active' : '')" to="/about">
+        <a :class="($route.name === 'about' ? 'active' : '')" href="https://favourfelix.com/about">
           About Me
-        </nuxt-link>
+          <span class="material-icons">call_made</span>
+        </a>
         <div class="bar about" />
       </div>
       <div class="action">
-        <nuxt-link :class="($route.name === 'fieldtrips' ? 'active' : '')" to="/fieldtrips">
+        <a :class="($route.name === 'fieldtrips' ? 'active' : '')" href="https://favourfelix.com/fieldtrips">
           Field Trips
-        </nuxt-link>
-        <div class="bar trips" />
-      </div>
-      <div class="action">
-        <a target="_blank" href="https://stories.favourfelix.com">
-          My Stories
           <span class="material-icons">call_made</span>
         </a>
         <div class="bar trips" />
