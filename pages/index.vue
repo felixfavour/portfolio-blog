@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="card-action">
+    <div class="card-action outer">
       <nuxt-link to="/stories">
         <div class="text">
           See all stories
@@ -123,7 +123,7 @@ a {
   height: 100%;
 }
 .highlights-container > .card-action > a {
-  margin-top: 64px;
+  margin-top: 6px;
   display: flex;
   width: 300px;
   height: 45px;
@@ -198,10 +198,10 @@ a {
 
 .left-side {
   flex-basis: 63%;
-  margin-top: 28px;
+  margin-top: 0;
 }
 .left-side .card {
-  height: 100%;
+  /* height: 100%; */
 }
 .right-side .card {
   height: 46%;
@@ -239,5 +239,70 @@ a {
   width: 100%;
   top: 0;
   height: 160px;
+}
+.card-action a .text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+  .left-side .card-img, .left-side .card .card-img-overlay {
+    height: 350px;
+  }
+  .right-side .card-img, .right-side .card .card-img-overlay {
+    height: 130px;
+  }
+  .right-side .card {
+    height: 38%;
+  }
+  .right-side a {
+    margin-top: 16px;
+  }
+  .card-action.outer {
+    margin-top: -90px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 800px) {
+
+}
+
+@media screen and (max-width: 600px) {
+  .highlights-container > .inner {
+    flex-direction: column;
+    height: auto;
+  }
+  .left-side .card-img, .left-side .card .card-img-overlay {
+    height: 30vh;
+  }
+  .left-side .card-info {
+    flex-direction: column;
+    padding: 16px;
+  }
+  .left-side .card-action {
+    margin-top: 32px;
+  }
+  .left-side .card-action a {
+    width: auto;
+    justify-content: space-between;
+    padding: 0 5%;
+  }
+  .right-side {
+    display: none;
+  }
+  .card-action.outer {
+    margin-top: 0px;
+    width: auto;
+  }
+  .highlights-container > .card-action > a {
+    width: auto;
+    margin-top: 8vh;
+  }
 }
 </style>

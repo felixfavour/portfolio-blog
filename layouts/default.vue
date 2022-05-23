@@ -32,7 +32,12 @@
 </template>
 
 <script>
+import QuotePurger from '~/components/QuotePurger.vue'
+import MobileHeader from '~/components/MobileHeader.vue'
+import Header from '~/components/Header.vue'
+import Footer from '~/components/Footer.vue'
 export default {
+  components: { QuotePurger, MobileHeader, Header, Footer },
   data () {
     return {
       isLoading: true,
@@ -71,7 +76,13 @@ export default {
   }
   .container {
     padding: 0 10vw;
-    min-height: 82vh;
+    padding-top: 95px;
+    min-height: var(--container-height);
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .ellipse {
     display: none;

@@ -11,7 +11,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet vestibulum dictum maecenas euismod in fusce in tempor. Pretium amet, condimentum posuere sed tincidunt porttitor ornare. Vivamus eget mauris ut phasellus enim. Egestas libero, mi auctor duis sapien, malesuada pharetra. Nulla interdum pharetra, in faucibus vulputate pellentesque.
         Volutpat non eu, magna consequat. Mi molestie pretium molestie sapien sit massa. Euismod elementum nam pulvinar vel vulputate. Sapien, egestas ornare id purus interdum. Quis orci, mattis ultrices facilisi. Ut faucibus arcu egestas ullamcorper venenatis.
         Arcu aliquet eu sed lorem arcu. Consectetur mauris mauris diam, libero elit. In pharetra sapien morbi laoreet urna porta. Scelerisque risus adipiscing feugiat dignissim. Posuere augue tortor lacus duis varius. Tellus integer quisque eu et tellus lectus amet lectus. Arcu consequat blandit fames non consectetur amet purus quis. Quam nec dignissim suspendisse felis, natoque lacus, vestibulum cum. Gravida volutpat, congue elementum felis, iaculis.
-
+        <br><br>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet vestibulum dictum maecenas euismod in fusce in tempor. Pretium amet, condimentum posuere sed tincidunt porttitor ornare. Vivamus eget mauris ut phasellus enim. Egestas libero, mi auctor duis sapien, malesuada pharetra. Nulla interdum pharetra, in faucibus vulputate pellentesque.
         Volutpat non eu, magna consequat. Mi molestie pretium molestie sapien sit massa. Euismod elementum nam pulvinar vel vulputate. Sapien, egestas ornare id purus interdum. Quis orci, mattis ultrices facilisi. Ut faucibus arcu egestas ullamcorper venenatis.
       </p>
@@ -28,6 +28,7 @@ export default {
 <style scoped>
 .section > .inner {
   padding: 50px 0;
+  padding-bottom: 15%;
   width: 70%;
   margin: 0 auto;
 }
@@ -47,5 +48,22 @@ export default {
   font-size: 1.2rem;
   line-height: 204.5%;
   font-family: 'Lora', serif;
+}
+
+@media screen and (max-width: 600px) {
+  .section > .inner {
+    padding-top: 10%;
+  }
+  .header {
+    font-size: 1.8rem;
+  }
+  .content {
+    margin-top: 0;
+    font-size: 1.1rem;
+    line-height: 2rem;
+  }
+  .section > .inner {
+    width: 100%;
+  }
 }
 </style>

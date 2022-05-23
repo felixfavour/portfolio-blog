@@ -41,7 +41,7 @@ export default {
   background: url('~assets/bitmaps/spotify.png') no-repeat;
   background-size: cover;
   width: 100%;
-  height: 160px;
+  height: 220px;
 }
 a {
   text-decoration: none;
@@ -59,7 +59,7 @@ a {
   color: #DE8500;
 }
 .card {
-  border: 6px solid;
+  border: 2px solid;
   position: relative;
 }
 .card-info {
