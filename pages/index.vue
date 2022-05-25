@@ -159,7 +159,7 @@ a {
 }
 .left-side a {
   display: flex;
-  width: 200px;
+  width: 170px;
   height: 45px;
   justify-content: space-around;
   align-items: center;
@@ -168,6 +168,7 @@ a {
   font-size: 18px;
   background: #000;
   color: #DE8500;
+  padding: 0 24px;
 }
 .right-side a {
   display: flex;
