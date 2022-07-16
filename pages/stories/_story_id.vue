@@ -2,26 +2,27 @@
   <div class="story-ctn section">
     <div class="inner">
       <div class="header">
-        Why I prefer Youtube Music to Spotify, as a Nigerian
+        {{ story.title[0] }}
       </div>
       <div class="hero-img">
         <img src="~assets/bitmaps/spotify.png" alt="">
       </div>
-      <p class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet vestibulum dictum maecenas euismod in fusce in tempor. Pretium amet, condimentum posuere sed tincidunt porttitor ornare. Vivamus eget mauris ut phasellus enim. Egestas libero, mi auctor duis sapien, malesuada pharetra. Nulla interdum pharetra, in faucibus vulputate pellentesque.
-        Volutpat non eu, magna consequat. Mi molestie pretium molestie sapien sit massa. Euismod elementum nam pulvinar vel vulputate. Sapien, egestas ornare id purus interdum. Quis orci, mattis ultrices facilisi. Ut faucibus arcu egestas ullamcorper venenatis.
-        Arcu aliquet eu sed lorem arcu. Consectetur mauris mauris diam, libero elit. In pharetra sapien morbi laoreet urna porta. Scelerisque risus adipiscing feugiat dignissim. Posuere augue tortor lacus duis varius. Tellus integer quisque eu et tellus lectus amet lectus. Arcu consequat blandit fames non consectetur amet purus quis. Quam nec dignissim suspendisse felis, natoque lacus, vestibulum cum. Gravida volutpat, congue elementum felis, iaculis.
-        <br><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet vestibulum dictum maecenas euismod in fusce in tempor. Pretium amet, condimentum posuere sed tincidunt porttitor ornare. Vivamus eget mauris ut phasellus enim. Egestas libero, mi auctor duis sapien, malesuada pharetra. Nulla interdum pharetra, in faucibus vulputate pellentesque.
-        Volutpat non eu, magna consequat. Mi molestie pretium molestie sapien sit massa. Euismod elementum nam pulvinar vel vulputate. Sapien, egestas ornare id purus interdum. Quis orci, mattis ultrices facilisi. Ut faucibus arcu egestas ullamcorper venenatis.
-      </p>
+      <p v-html="story['content:encoded'][0]" class="content" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MyStory'
+  name: 'MyStory',
+  data () {
+    return {
+      story: {}
+    }
+  },
+  created () {
+    this.story = this.$store.state.stories.find(story => story.id === this.$route.params.story_id)
+  }
 }
 </script>
 

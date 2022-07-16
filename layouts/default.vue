@@ -45,6 +45,9 @@ export default {
       screenWidth: 0
     }
   },
+  created () {
+    this.getStories()
+  },
   mounted () {
     this.screenWidth = window.screen.availWidth
     this.onResize()
@@ -63,6 +66,11 @@ export default {
       window.addEventListener('resize', () => {
         this.screenWidth = window.screen.availWidth
       })
+    },
+    async getStories () {
+      const storiesPromise = await fetch('https://favour-portfolio-be.herokuapp.com/v1/stories')
+      const stories = await storiesPromise.json()
+      this.$store.commit('setStories', stories.data)
     }
   }
 }

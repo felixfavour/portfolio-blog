@@ -2,17 +2,23 @@
   <div class="stories-ctn section">
     <div class="inner">
       <div class="stories-grid">
-        <StoryCard v-for="index in 3" :key="index" />
+        <StoryCard v-for="story in stories" :key="story.id" :story="story" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import StoryCard from '~/components/StoryCard.vue'
 export default {
   name: 'StoriesPage',
-  components: { StoryCard }
+  components: { StoryCard },
+  computed: {
+    ...mapState({
+      stories: state => state.stories
+    })
+  }
 }
 </script>
 

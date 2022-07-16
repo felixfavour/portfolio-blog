@@ -4,11 +4,11 @@
     <div class="card-info">
       <div class="card-text">
         <div class="card-title">
-          This is my card title
+          {{ story.title[0] }}
         </div>
         <div class="card-briefs">
           <div class="card-date">
-            the card date
+            {{ story.pubDate[0] }}
           </div>
           <div class="bar" />
           <div class="article-time">
@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="card-action">
-        <nuxt-link to="/stories/hdhjdh">
+        <nuxt-link :to="`/stories/${story.id}`">
           <div class="text">
             Read Story
           </div>
@@ -32,7 +32,13 @@
 
 <script>
 export default {
-  name: 'StoryCard'
+  name: 'StoryCard',
+  props: {
+    story: {
+      type: Object,
+      default: () => {}
+    }
+  }
 }
 </script>
 
