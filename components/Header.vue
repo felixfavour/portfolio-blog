@@ -1,20 +1,19 @@
 <template>
-  <div :class="['header-container', ($route.name.includes('-') ? 'elevated' : '')]">
-    <a class="logo" href="/" />
-    <div class="nav-actions">
-      <div class="action">
-        <a target="_blank" href="https://favourfelix.com">
-          Go Home
-        </a>
-      </div>
-      <div class="bar" />
-      <div class="action">
-        <span>
-          Early Access
-        </span>
-        <!-- <span>
-          {{ ($route.name === 'index' ? 'Highlights' : ($route.name.includes('-') ? 'MY STORY' : $route.name.toUpperCase())) }}
-        </span> -->
+  <div :class="['header-container', ($route.name.includes('-') || $route.name.includes('stories') ? 'elevated' : '')]">
+    <div class="inner">
+      <a class="logo" href="/" />
+      <div class="nav-actions">
+        <div class="action">
+          <a target="_blank" href="https://favourfelix.com">
+            Go Home
+          </a>
+        </div>
+        <div class="bar" />
+        <div class="action">
+          <span>
+            {{ ($route.name === 'index' ? 'Highlights' : ($route.name.includes('-') ? 'MY STORY' : $route.name.toUpperCase())) }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -43,11 +42,19 @@ export default {
 <style scoped>
   .header-container {
     background-color: #FFDEAC;
-    height: 95px;
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    bottom: auto;
+  }
+  .header-container .inner {
     justify-content: space-between;
     align-items: center;
     display: flex;
-    padding: 0 10vw;
+    width: 80%;
+    max-width: 1440px;
+    height: 95px;
+    margin: 0 auto;
   }
   .header-container.elevated {
     box-shadow: 40px 5px 45px 4px #de850049;
@@ -72,7 +79,7 @@ export default {
     align-items: center;
     transition: .4s;
     justify-content: center;
-    font-weight: normal;
+    font-weight: 500;
     font-size: 24px;
     color: #000;
   }
@@ -84,7 +91,7 @@ export default {
   .action span {
     cursor: default;
     font-size: 24px;
-    font-weight: normal;
+    font-weight: 500;
   }
   .action span::after {
     content: '.';

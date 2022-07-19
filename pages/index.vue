@@ -1,132 +1,204 @@
 <template>
   <div class="highlights-container">
     <div class="inner">
-      <div class="header-text">
-        <span class="comeup-one">you</span>
-        <span class="comeup-two">don't</span>
-        <span class="comeup-three">rush</span>
-        <div class="comeup-four">
-          genius.
+      <div class="left-side">
+        <div class="card">
+          <div class="card-img" :style="`background-image: url(${highlightOne.image});`" />
+          <div class="card-img-overlay" />
+          <div class="card-info">
+            <div class="card-text">
+              <div class="card-title">
+                {{ highlightOne.title[0] }}
+              </div>
+              <div class="card-briefs">
+                <div class="card-date">
+                  {{ highlightOne.pubDate }}
+                </div>
+                <div class="bar" />
+                <div class="article-time">
+                  {{ highlightOne.read_time }} min read
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <nuxt-link :to="`/stories/${highlightOne.id}`">
+                <div class="text">
+                  Read Story
+                </div>
+                <div class="material-icons">
+                  arrow_forward
+                </div>
+              </nuxt-link>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="sub-text comeup-five">
-        “Good things take time. Great things take a long time. And the best things take the longest time.”
-      </div>
-      <div class="form comeup-six">
-        <label :class="isEmailValid ? '' : 'error-input'" for="input">
-          Your Email Address
-          <input v-model="email" type="text">
-        </label>
-        <button :disabled="!isEmailValid" class="primary-btn" @click="addEmailToMailingList">
-          <div class="text">
-            Get Early Access
+      <div class="right-side">
+        <div class="card">
+          <div class="card-img" :style="`background-image: url(${highlightTwo.image});`" />
+          <div class="card-img-overlay" />
+          <div class="card-info">
+            <div class="card-text">
+              <div class="card-title">
+                {{ highlightTwo.title[0] }}
+              </div>
+              <div class="card-briefs">
+                <div class="card-date">
+                  {{ highlightTwo.pubDate }}
+                </div>
+                <div class="bar" />
+                <div class="article-time">
+                  {{ highlightTwo.read_time }} min read
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <nuxt-link :to="`/stories/${highlightTwo.id}`">
+                <div class="text">
+                  Read Story
+                </div>
+                <div class="material-icons">
+                  arrow_forward
+                </div>
+              </nuxt-link>
+            </div>
           </div>
-          <div v-show="!isUploading" class="material-icons">
-            arrow_forward
+        </div>
+        <div class="card">
+          <div class="card-img" :style="`background-image: url(${highlightThree.image});`" />
+          <div class="card-img-overlay" />
+          <div class="card-info">
+            <div class="card-text">
+              <div class="card-title">
+                {{ highlightThree.title[0] }}
+              </div>
+              <div class="card-briefs">
+                <div class="card-date">
+                  {{ highlightThree.pubDate }}
+                </div>
+                <div class="bar" />
+                <div class="article-time">
+                  {{ highlightThree.read_time }} min read
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <nuxt-link :disabled="!highlightThree.id" :to="`/stories/${highlightThree.id}`">
+                <div class="text">
+                  Read Story
+                </div>
+                <div class="material-icons">
+                  arrow_forward
+                </div>
+              </nuxt-link>
+            </div>
           </div>
-          <Loader v-show="isUploading" />
-        </button>
+        </div>
       </div>
+    </div>
+    <div v-if="$store.state.stories.length >= 3" class="card-action outer">
+      <nuxt-link to="/stories">
+        <div class="text">
+          See all stories
+        </div>
+        <div class="material-icons">
+          arrow_forward
+        </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-// initialize firebase analytics
-import 'firebase/analytics'
 export default {
   name: 'Highlights',
   data () {
     return {
-      isUploading: false,
-      email: ''
+      highlightOne: this.$store.state.stories[0],
+      highlightTwo: this.$store.state.stories[1] || { title: [] },
+      highlightThree: this.$store.state.stories[2] || { title: [] }
     }
   },
-  head () {
-    return {
-      title: 'Favour Felix, Stories',
-      meta: [
-        {
-          name: 'description',
-          content:
-            'Dig into the life of a Software Engineer, talking about everything you want to hear.'
-        }
-      ]
-    }
-  },
-  computed: {
-    isEmailValid () {
-      const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return regex.test(String(this.email).toLowerCase())
-    }
-  },
-  mounted () {
-    const analytics = firebase.analytics()
-    analytics.logEvent('page_visited', { name: 'TEST_VISIT' })
-  },
-  methods: {
-    addEmailToMailingList () {
-      const firestore = firebase.firestore()
-      this.isUploading = true
-      firestore.collection('emails').doc().set({
-        to: this.email,
-        message: {
-          subject: 'Hi, Its Favour.',
-          text: 'Thanks for showing interest in my online journal, trust me! you made a very good decision. I\'d be reaching out to you soon.'
-        }
-      }).then((_onfulfilled) => {
-        firestore.collection('visitors').doc().set({
-          email: this.email
-        }).then((_onfulfilled) => {
-          this.isUploading = false
-          this.$router.push('/thanks')
-        })
-      })
-    }
+  head: {
+    title: "Favour Felix's Stories - The Highlights",
+    meta: [
+      { hid: 'description', name: 'description', content: 'One story explaining a detailed experience, exciting topics across faith, career, hobbies and many more. Sometimes stepping into the mind of others could be very helpful in reshaping your perspective.' },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Favour Felix\'s Stories - The Highlights'
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: 'One story explaining a detailed experience, exciting topics across faith, career, hobbies and many more. Sometimes stepping into the mind of others could be very helpful in reshaping your perspective.'
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'https://firebasestorage.googleapis.com/v0/b/favour-portfolio.appspot.com/o/favour-felix.jpg?alt=media&token=903343a2-0823-4383-9b9f-3ad1cad45180'
+      }
+    ]
   }
 }
 </script>
 
 <style scoped>
-.highlights-container > * {
-  transition: 0.2s;
-  z-index: 1;
+a {
+  text-decoration: none;
 }
 .highlights-container {
+  height: 100%;
+}
+.highlights-container > .card-action > a {
+  margin-top: 6px;
   display: flex;
+  width: 300px;
+  height: 45px;
+  padding: 0 24px;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  padding-top: 6%;
-  transition: 0.2s;
+  outline: none;
+  border: 2px solid;
+  font-size: 18px;
+  background: #DE8500;
+  color: #000000;
 }
-.highlights-container > .inner {
-  width: 1000px;
+.highlights-container .inner {
+  display: flex;
+  justify-content: space-between;
+  height: 600px;
 }
-.header-text {
-  font-family: 'Graphik', sans-serif;
-  font-size: 6rem;
-  font-weight: bold;
-  margin-bottom: 2%;
-  color: #9E5F00;
-  transition: 0.2s;
+.card {
+  border: 6px solid;
+  position: relative;
 }
-.header-text > span {
-  margin-right: calc(1ch / 5);
-  display: inline-block;
+.card-info {
+  padding: 16px;
 }
-.header-text > div {
+.left-side .card-info {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.left-side a {
+  display: flex;
+  width: 170px;
+  height: 45px;
+  justify-content: space-around;
+  align-items: center;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: #000;
   color: #DE8500;
+  padding: 0 24px;
 }
-.sub-text {
-  font-family: 'Crimson Text', serif;
-  font-size: 2rem;
-  margin-bottom: 10%;
-  width: 70%;
-}
-.primary-btn {
-  text-decoration: none;
+.right-side a {
   display: flex;
   width: auto;
   margin-top: 32px;
@@ -134,209 +206,134 @@ export default {
   padding: 0 24px;
   justify-content: space-between;
   align-items: center;
-  font-size: 18px;
-  background: #9E5F00;
-  border: 2px solid #000000;
-  color: #FFFFFF;
-  transition: 0.2s;
-  cursor: pointer;
-}
-.primary-btn:disabled {
-  cursor: not-allowed;
-  background: #cecece;
-  border-color: #cecece;
-}
-.primary-btn .text {
-  margin-right: 28px;
-}
-label > input {
-  display: block;
-  background: #FFFFFF;
-  border: 2px solid #000000;
-  height: 50px;
-  margin-top: 8px;
-  width: 100%;
-  max-width: 800px;
   outline: none;
-  font-size: 1.2rem;
-  padding: 0 8px;
-  box-sizing: border-box;
-  transition: 0.2s;
-}
-label:focus-within {
-  color: #9E5F00;
-}
-label > input:focus {
-  background: #DE8500;
-}
-.error-input > input {
-  border: 2px solid #DE8500;
-  background: #FFFFFF;
-}
-label::after {
-  content: ' ';
-  display: block;
-  width: 100%;
-  margin-top: 6px;
+  border: none;
+  font-size: 18px;
+  background: #000;
   color: #DE8500;
-  animation: 2s comeup-one forwards;
-  height: 30px;
 }
-.error-input::after {
-  content: 'Email address is not valid';
+.card-briefs {
+  margin: 8px 0;
+  display: flex;
+  color: #0000007a;
 }
-
-/* Animations */
-.comeup-one {
-  opacity: 0;
-  animation: 2s comeup-one forwards ease-in-out;
-}
-.comeup-two {
-  opacity: 0;
-  animation: 2s comeup-two forwards ease-in-out;
-}
-.comeup-three {
-  opacity: 0;
-  animation: 2s comeup-three forwards ease-in-out;
-}
-.comeup-four {
-  opacity: 0;
-  animation: 2s comeup-four forwards ease-in-out;
-}
-.comeup-five {
-  opacity: 0;
-  animation: 2.5s comeup-four forwards ease-in-out;
-}
-.comeup-six {
-  opacity: 0;
-  animation: 3s comeup-six forwards ease-in-out;
-}
-@keyframes comeup-one {
-  0% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  25% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes comeup-two {
-  25% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes comeup-three {
-  50% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  75% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes comeup-four {
-  75% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes comeup-five {
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes comeup-six {
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.bar {
+  margin: auto 24px;
+  width: 3px;
+  height: 20px;
+  background: #DE8500;
+  border-radius: 16px;
 }
 
-/* Media Queries */
+.left-side {
+  flex-basis: 63%;
+  margin-top: 0;
+}
+.left-side .card {
+  /* height: 100%; */
+}
+.right-side .card {
+  height: 46%;
+}
+.right-side {
+  flex-basis: 33%;
+}
+.left-side .card-img {
+  background: url('~assets/bitmaps/spotify.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 440px;
+}
+.left-side .card-img-overlay {
+  position: absolute;
+  background: #de850021;
+  background-size: cover;
+  width: 100%;
+  top: 0;
+  height: 440px;
+}
+.right-side .card:nth-child(1) {
+  margin-bottom: 60px;
+}
+.right-side .card-img {
+  background: url('~assets/bitmaps/spotify.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 160px;
+}
+.right-side .card-img-overlay {
+  position: absolute;
+  background: #de850021;
+  background-size: cover;
+  width: 100%;
+  top: 0;
+  height: 160px;
+}
+.card-action a .text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 @media screen and (max-width: 1400px) {
-  .highlights-container {
-    padding-top: 5%;
+  .left-side .card-img, .left-side .card .card-img-overlay {
+    height: 350px;
   }
-  .header-text {
-    font-size: 5rem;
+  .right-side .card-img, .right-side .card .card-img-overlay {
+    height: 130px;
   }
-  .sub-text {
-    font-size: 1.5rem;
-    margin-bottom: 6%;
+  .right-side .card {
+    height: 38%;
   }
-}
-@media screen and (max-width: 1050px) {
-  .highlights-container {
-    padding-top: 15%;
+  .right-side a {
+    margin-top: 16px;
   }
-  .header-text {
-    font-size: 5rem;
+  .card-action.outer {
+    margin-top: -90px;
   }
 }
+
+@media screen and (max-width: 1200px) {
+
+}
+
 @media screen and (max-width: 800px) {
-  .highlights-container {
-    padding-top: 10%;
-  }
-  .highlights-container > .inner {
-    width: 100%;
-  }
-  .header-text {
-    font-size: 5rem;
-  }
-  .sub-text {
-    width: 85%;
-  }
+
 }
+
 @media screen and (max-width: 600px) {
-  .highlights-container {
-    padding-top: 20%;
-  }
   .highlights-container > .inner {
-    width: 100%;
+    flex-direction: column;
+    height: auto;
   }
-  .header-text {
-    font-size: 3rem;
+  .left-side .card-img, .left-side .card .card-img-overlay {
+    height: 30vh;
   }
-  .sub-text {
-    width: 95%;
-    font-size: 1.2rem;
+  .left-side .card-info {
+    flex-direction: column;
+    padding: 16px;
   }
-  label {
-    font-size: 0.8rem;
+  .left-side .card-action {
+    margin-top: 32px;
   }
-  label > input {
-    font-size: 1rem;
+  .left-side .card-action a {
+    width: auto;
+    justify-content: space-between;
+    padding: 0 5%;
   }
-  .primary-btn {
-    font-size: 0.95rem;
+  .right-side {
+    display: none;
+  }
+  .card-action.outer {
+    margin-top: 0px;
+    width: auto;
+  }
+  .highlights-container > .card-action > a {
+    width: auto;
+    margin-top: 8vh;
   }
 }
 </style>

@@ -40,6 +40,9 @@ export default {
     justify-content: space-between;
     align-items: center;
     display: flex;
+    max-width: 1440px;
+    width: 80%;
+    margin: 0 auto;
     /* padding: 0 10vw; */
     /* position: fixed;
     z-index: -1;
@@ -50,7 +53,7 @@ export default {
   }
   .footer-socials {
     flex-basis: 40%;
-    padding-left: 10vw;
+    /* padding-left: 10vw; */
     justify-content: space-between;
   }
   .footer-socials img {
@@ -60,7 +63,7 @@ export default {
   .footer-contact {
     flex-basis: 60%;
     display: flex;
-    padding-right: 10vw;
+    /* padding-right: 10vw; */
     justify-content: flex-end;
   }
   .footer-contact a {

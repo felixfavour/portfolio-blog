@@ -1,37 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
-
-@font-face {
-  font-family: "Graphik";
-  src: url(../assets/fonts/GraphikBold.otf); 
-  src: url(../assets/fonts/GraphikBold.otf) format("embedded-opentype"),
-  url(../assets/fonts/GraphikBold.otf) format("truetype");
-  font-weight: bolder;
-}
-@font-face {
-  font-family: "Graphik";
-  src: url(../assets/fonts/GraphikSemibold.otf); 
-  src: url(../assets/fonts/GraphikSemibold.otf) format("embedded-opentype"),
-  url(../assets/fonts/GraphikSemibold.otf) format("truetype");
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Graphik";
-  src: url(../assets/fonts/GraphikMedium.otf); 
-  src: url(../assets/fonts/GraphikMedium.otf) format("embedded-opentype"),
-  url(../assets/fonts/GraphikMedium.otf) format("truetype");
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Graphik";
-  src: url(../assets/fonts/GraphikRegular.otf); 
-  src: url(../assets/fonts/GraphikRegular.otf) format("embedded-opentype"),
-  url(../assets/fonts/GraphikRegular.otf) format("truetype");
-  font-weight: normal;
-}
+@import url('https://fonts.cdnfonts.com/css/graphik');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 
 * {
   scroll-behavior: smooth;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+:root {
+  --container-height: 79vh;
 }
 body {
   margin: 0;
@@ -45,6 +24,9 @@ button {
   border: none;
   outline: none;
   background-color: transparent;
+}
+.section > .inner {
+  max-width: 1440px;
 }
 
 /* Scroll bar custom styling */
@@ -85,11 +67,11 @@ button {
   background-color: #DE8500;
 }
 
-/* Animations */
-.come-up {
-  animation: comeup 0.7s forwards;
-  -webkit-animation: comeup 0.7s forwards;
+h1, h2, h3, h4 {
+  font-weight: 900;
 }
+
+/* Animations */
 .fadein {
   animation: comeup 1.5s forwards;
   -webkit-animation: comeup 1.5s forwards;
@@ -110,12 +92,12 @@ button {
 @keyframes fadein {
   0% {
     opacity: 0;
-    transform: translateY(10px);
-    -webkit-transform: translateY(10px);
-    -moz-transform: translateY(10px);
-    -ms-transform: translateY(10px);
-    -o-transform: translateY(10px);
-}
+    transform: translateY(5px);
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+  }
     100% {
     opacity: 1;
     transform: translateY(0);
@@ -258,4 +240,18 @@ button {
   to {
     transform: translate(0px, 0);
   }
+}
+
+/*MEDIUM STYLES*/
+figure {
+  max-width: 100%;
+  text-align: center;
+  margin: 5% 0;
+  /*background: #9E5F00;*/
+  /*padding: 12px;*/
+}
+figure img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

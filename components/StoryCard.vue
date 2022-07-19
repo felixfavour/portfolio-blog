@@ -1,23 +1,24 @@
 <template>
   <div class="card">
-    <div class="card-img" />
+    <div class="card-img" :style="`background-image: url(${story.image});`" />
+    <div class="card-img-overlay" />
     <div class="card-info">
       <div class="card-text">
         <div class="card-title">
-          This is my card title
+          {{ story.title[0] }}
         </div>
         <div class="card-briefs">
           <div class="card-date">
-            the card date
+            {{ story.pubDate }}
           </div>
           <div class="bar" />
           <div class="article-time">
-            20 mins read
+            {{ story.read_time }} min read
           </div>
         </div>
       </div>
       <div class="card-action">
-        <nuxt-link to="/stories/hdhjdh">
+        <nuxt-link :to="`/stories/${story.id}`">
           <div class="text">
             Read Story
           </div>
@@ -32,7 +33,13 @@
 
 <script>
 export default {
-  name: 'StoryCard'
+  name: 'StoryCard',
+  props: {
+    story: {
+      type: Object,
+      default: () => {}
+    }
+  }
 }
 </script>
 
@@ -40,8 +47,9 @@ export default {
 .card-img {
   background: url('~assets/bitmaps/spotify.png') no-repeat;
   background-size: cover;
+  background-position: center;
   width: 100%;
-  height: 160px;
+  height: 220px;
 }
 a {
   text-decoration: none;
@@ -59,7 +67,7 @@ a {
   color: #DE8500;
 }
 .card {
-  border: 6px solid;
+  border: 2px solid;
   position: relative;
 }
 .card-info {

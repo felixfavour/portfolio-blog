@@ -11,35 +11,34 @@
         <span />
       </button>
     </div>
-    <div :class="'nav-actions ' + (hamOpen ? 'sidebarEnter' : 'sidebarExit')">
-      <div class="action">
-        <a :class="($route.name === 'index' ? 'active' : '')" href="https://favourfelix.com">
+    <ul :class="'nav-actions ' + (hamOpen ? 'sidebarEnter' : 'sidebarExit')">
+      <li class="action">
+        <nuxt-link :class="($route.name === 'index' ? 'active' : '')" to="/">
           Home
-          <span class="material-icons">call_made</span>
-        </a>
+        </nuxt-link>
         <div class="bar home" />
-      </div>
-      <div class="action">
+      </li>
+      <li class="action">
         <a :class="($route.name === 'about' ? 'active' : '')" href="https://favourfelix.com/about">
           About Me
           <span class="material-icons">call_made</span>
         </a>
         <div class="bar about" />
-      </div>
-      <div class="action">
+      </li>
+      <li class="action">
         <a :class="($route.name === 'fieldtrips' ? 'active' : '')" href="https://favourfelix.com/fieldtrips">
           Field Trips
           <span class="material-icons">call_made</span>
         </a>
         <div class="bar trips" />
-      </div>
-      <div class="action">
+      </li>
+      <li class="action">
         <a style="color: #FFDEAC" target="_blank" href="https://1drv.ms/b/s!AmKSIfAstaFL2DFR54DLXMviQzum">
           CV / Resume
           <span class="material-icons">cloud_download</span>
         </a>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -82,7 +81,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5%;
+    padding: 0 5vw;
   }
   .logo {
     width: 100%;
@@ -93,12 +92,13 @@ export default {
     position: fixed;
     right: 0;
     left: 0;
-    padding: 0 5%;
+    padding: 0 5vw;
     top: 10vh;
     bottom: 0;
   }
   .nav-actions .action {
     margin: 32px 0;
+    list-style-type: none;
     /* border-bottom: 1px solid #FFF; */
   }
   .nav-actions .action a {
