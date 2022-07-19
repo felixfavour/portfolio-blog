@@ -18,6 +18,27 @@ export default {
     ...mapState({
       stories: state => state.stories
     })
+  },
+  head: {
+    title: "Favour Felix's Stories - All Stories",
+    meta: [
+      { hid: 'description', name: 'description', content: 'Have a look at the exciting stories of a young man, a Software Engineer currently based in Lagos, Nigeria.' },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Favour Felix\'s Stories - Stories about everything'
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: 'Have a look at the exciting stories of a young man, a Software Engineer currently based in Lagos, Nigeria.'
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'https://firebasestorage.googleapis.com/v0/b/favour-portfolio.appspot.com/o/favour-felix.jpg?alt=media&token=903343a2-0823-4383-9b9f-3ad1cad45180'
+      }
+    ]
   }
 }
 </script>
@@ -30,8 +51,6 @@ export default {
   row-gap: 32px;
   padding-bottom: 10%;
   padding-top: 40px;
-  height: 100%;
-  min-height: 80vh;
 }
 
 @media screen and (max-width: 600px) {

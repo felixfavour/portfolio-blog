@@ -1,14 +1,34 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'portfolio-blog',
+    title: "Favour Felix's Stories - Stories about everything",
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'With the advent of a lot of visual content, I believe the writing culture is slowly fading away; Favour Felix\'s stories is my contribution to it\'s sustainability. I am a young man currently based in Lagos, Nigeria.' },
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        content: 'stories.favourfelix.com'
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Favour Felix\'s Stories - Stories about everything'
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: 'With the advent of a lot of visual content, I believe the writing culture is slowly fading away; Favour Felix\'s stories is my contribution to it\'s sustainability. I am a young man currently based in Lagos, Nigeria.'
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'https://firebasestorage.googleapis.com/v0/b/favour-portfolio.appspot.com/o/favour-felix.jpg?alt=media&token=903343a2-0823-4383-9b9f-3ad1cad45180'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

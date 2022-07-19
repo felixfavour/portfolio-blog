@@ -5,7 +5,7 @@
         <h2>
           {{ story.title[0] }}
         </h2>
-        <div class="pub-date">published on <b>{{ story.pubDate[0].slice(0, story.pubDate[0].length - 7) }}</b></div>
+        <div class="pub-date">published on <b>{{ story.pubDate }}</b> <span class="separator">-</span> {{ story.read_time }} min read</div>
         <div class="tags">
           <nuxt-link v-for="(tag, index) in story.category" :key="tag" to="#" class="primary-btn">{{ index }} - {{ tag }}</nuxt-link>
         </div>
@@ -24,6 +24,48 @@ export default {
       story: {}
     }
   },
+  head () {
+    return {
+      title: `${this.story.title[0]} | Story by Favour Felix`,
+      meta: [
+        {
+          hid: 'story-page',
+          name: 'description',
+          content: `${this.story.content.split(0, 50)}`
+        },
+        {
+          hid: 'og:type-story',
+          name: 'og:type',
+          content: 'article'
+        },
+        {
+          hid: 'og:type-story-author',
+          name: 'article:author',
+          content: 'Favour Felix'
+        },
+        {
+          hid: 'og:type-story-tag',
+          name: 'article:tag',
+          content: `${this.story.category.toString()}`
+        },
+        {
+          hid: 'og:title-story',
+          name: 'og:title',
+          content: `${this.story.title[0]} | Story by Favour Felix`
+        },
+        {
+          hid: 'og:description-story',
+          name: 'og:description',
+          content: `${this.story.content.split(0, 50)}`
+        },
+        {
+          hid: 'og:image-story',
+          name: 'og:image',
+          content: `${this.story.image}`
+        }
+      ]
+    }
+  },
   created () {
     this.story = this.$store.state.stories.find(story => story.id === this.$route.params.story_id)
   }
@@ -31,9 +73,14 @@ export default {
 </script>
 
 <style scoped>
+h1, h2, h3, h4 {
+  font-weight: 900;
+}
+.separator {
+  margin: 0 8px;
+}
 .tags {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   overflow-x: auto;
 }
@@ -52,6 +99,7 @@ export default {
   border-right: 0;
   transition: 0.2s;
   text-decoration: none;
+  white-space: nowrap;
 }
 .primary-btn:hover {
   background: #9E5F00;
@@ -68,9 +116,11 @@ export default {
 }
 .hero-img {
   width: 100%;
-  height: 500px;
+  min-height: 300px;
+  height: 50vh;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   margin: 5% 0;
 }
 .header > h2 {
@@ -82,6 +132,7 @@ export default {
   margin-bottom: 8px;
 }
 .pub-date {
+  font-size: 1rem;
   margin-bottom: 1.5rem;
 }
 .pub-date b {
@@ -96,7 +147,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   .section > .inner {
-    padding-top: 10%;
+    padding-top: 5%;
   }
   .header {
     font-size: 1.8rem;
@@ -108,6 +159,11 @@ export default {
   }
   .section > .inner {
     width: 100%;
+  }
+  .separator {
+    display: block;
+    max-height: 0px;
+    margin: 4px 0;
   }
 }
 </style>

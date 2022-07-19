@@ -3,25 +3,25 @@
     <div class="inner">
       <div class="left-side">
         <div class="card">
-          <div class="card-img" />
+          <div class="card-img" :style="`background-image: url(${highlightOne.image});`" />
           <div class="card-img-overlay" />
           <div class="card-info">
             <div class="card-text">
               <div class="card-title">
-                This is my card title
+                {{ highlightOne.title[0] }}
               </div>
               <div class="card-briefs">
                 <div class="card-date">
-                  the card date
+                  {{ highlightOne.pubDate }}
                 </div>
                 <div class="bar" />
                 <div class="article-time">
-                  20 mins read
+                  {{ highlightOne.read_time }} min read
                 </div>
               </div>
             </div>
             <div class="card-action">
-              <nuxt-link to="/stories/hdhjdh">
+              <nuxt-link :to="`/stories/${highlightOne.id}`">
                 <div class="text">
                   Read Story
                 </div>
@@ -35,25 +35,25 @@
       </div>
       <div class="right-side">
         <div class="card">
-          <div class="card-img" />
+          <div class="card-img" :style="`background-image: url(${highlightTwo.image});`" />
           <div class="card-img-overlay" />
           <div class="card-info">
             <div class="card-text">
               <div class="card-title">
-                This is my card title
+                {{ highlightTwo.title[0] }}
               </div>
               <div class="card-briefs">
                 <div class="card-date">
-                  the card date
+                  {{ highlightTwo.pubDate }}
                 </div>
                 <div class="bar" />
                 <div class="article-time">
-                  20 mins read
+                  {{ highlightTwo.read_time }} min read
                 </div>
               </div>
             </div>
             <div class="card-action">
-              <nuxt-link to="/stories/hdhjdh">
+              <nuxt-link :to="`/stories/${highlightTwo.id}`">
                 <div class="text">
                   Read Story
                 </div>
@@ -65,25 +65,25 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img" />
+          <div class="card-img" :style="`background-image: url(${highlightThree.image});`" />
           <div class="card-img-overlay" />
           <div class="card-info">
             <div class="card-text">
               <div class="card-title">
-                This is my card title
+                {{ highlightThree.title[0] }}
               </div>
               <div class="card-briefs">
                 <div class="card-date">
-                  the card date
+                  {{ highlightThree.pubDate }}
                 </div>
                 <div class="bar" />
                 <div class="article-time">
-                  20 mins read
+                  {{ highlightThree.read_time }} min read
                 </div>
               </div>
             </div>
             <div class="card-action">
-              <nuxt-link to="/stories/hdhjdh">
+              <nuxt-link :disabled="!highlightThree.id" :to="`/stories/${highlightThree.id}`">
                 <div class="text">
                   Read Story
                 </div>
@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="card-action outer">
+    <div v-if="$store.state.stories.length >= 3" class="card-action outer">
       <nuxt-link to="/stories">
         <div class="text">
           See all stories
@@ -111,7 +111,35 @@
 
 <script>
 export default {
-  name: 'Highlights'
+  name: 'Highlights',
+  data () {
+    return {
+      highlightOne: this.$store.state.stories[0],
+      highlightTwo: this.$store.state.stories[1] || { title: [] },
+      highlightThree: this.$store.state.stories[2] || { title: [] }
+    }
+  },
+  head: {
+    title: "Favour Felix's Stories - The Highlights",
+    meta: [
+      { hid: 'description', name: 'description', content: 'One story explaining a detailed experience, exciting topics across faith, career, hobbies and many more. Sometimes stepping into the mind of others could be very helpful in reshaping your perspective.' },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Favour Felix\'s Stories - The Highlights'
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: 'One story explaining a detailed experience, exciting topics across faith, career, hobbies and many more. Sometimes stepping into the mind of others could be very helpful in reshaping your perspective.'
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'https://firebasestorage.googleapis.com/v0/b/favour-portfolio.appspot.com/o/favour-felix.jpg?alt=media&token=903343a2-0823-4383-9b9f-3ad1cad45180'
+      }
+    ]
+  }
 }
 </script>
 
@@ -213,6 +241,7 @@ a {
 .left-side .card-img {
   background: url('~assets/bitmaps/spotify.png') no-repeat;
   background-size: cover;
+  background-position: center;
   width: 100%;
   height: 440px;
 }
@@ -230,6 +259,7 @@ a {
 .right-side .card-img {
   background: url('~assets/bitmaps/spotify.png') no-repeat;
   background-size: cover;
+  background-position: center;
   width: 100%;
   height: 160px;
 }
