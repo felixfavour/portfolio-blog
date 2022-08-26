@@ -16,6 +16,7 @@ export const mutations = {
       story.id = story.title[0].replaceAll(': ', '-')
         .replaceAll(' ', '-')
         .replaceAll('\'', '')
+        .replaceAll('.', '')
         .toLowerCase()
       story.read_time = Math.round(content.split(' ').length / 200)
     }
