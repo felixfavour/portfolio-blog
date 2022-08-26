@@ -10,7 +10,7 @@
           <nuxt-link v-for="(tag, index) in story.category" :key="tag" to="#" class="primary-btn">{{ index }} - {{ tag }}</nuxt-link>
         </div>
       </div>
-      <div class="hero-img" :style="`background-image: url(${story.image});`" />
+      <!-- <div class="hero-img" :style="`background-image: url(${story.image});`" /> -->
       <p v-html="story['content:encoded'][0]" class="content" />
     </div>
   </div>
@@ -111,7 +111,7 @@ h1, h2, h3, h4 {
 .section > .inner {
   padding: 50px 0;
   padding-bottom: 15%;
-  width: 70%;
+  width: 55%;
   margin: 0 auto;
 }
 .hero-img {
