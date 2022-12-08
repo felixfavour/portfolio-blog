@@ -1,5 +1,10 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  target: 'static',
+  ssr: true,
+  router: {
+    middleware: 'transfer'
+  },
   head: {
     title: "Favour Felix's Stories - Stories about everything",
     htmlAttrs: {
